@@ -1,0 +1,47 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+.controls {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 15px;
+    align-items: center;
+}
+
+.controls label {
+    font-weight: bold;
+    text-align: right;
+}
+
+.controls input[type="file"],
+.controls input[type="number"],
+.controls select,
+.controls input[type="color"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+canvas {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    max-width: 100%; /* Ensure canvas is responsive */
+    height: auto;
+}

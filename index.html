@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Number Overlay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Image Number Overlay</h1>
+
+    <div class="controls">
+        <label for="imageLoader">Load PNG Image:</label>
+        <input type="file" id="imageLoader" name="imageLoader" accept="image/png"/>
+
+        <label for="startNumber">Start Number:</label>
+        <input type="number" id="startNumber" value="1">
+
+        <label for="direction">Direction:</label>
+        <select id="direction">
+            <option value="clockwise">Clockwise</option>
+            <option value="counter-clockwise">Counter-Clockwise</option>
+        </select>
+
+        <label for="rotation">Rotation (degrees):</label>
+        <input type="number" id="rotation" value="0" step="1">
+
+        <label for="numCount">Number of Points:</label>
+        <input type="number" id="numCount" value="36" min="1">
+
+        <label for="radiusOffset">Radius Offset:</label>
+        <input type="number" id="radiusOffset" value="30" step="5">
+
+        <label for="fontSize">Font Size:</label>
+        <input type="number" id="fontSize" value="16" min="1">
+
+        <label for="fontColor">Font Color:</label>
+        <input type="color" id="fontColor" value="#0000FF"> <!-- Default Blue -->
+
+        <label for="offsetX">X Offset:</label>
+        <input type="number" id="offsetX" value="0" step="1">
+
+        <label for="offsetY">Y Offset:</label>
+        <input type="number" id="offsetY" value="0" step="1">
+
+    </div>
+
+    <button id="exportButton">Export Image</button>
+
+    <canvas id="imageCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
