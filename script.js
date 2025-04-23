@@ -11,6 +11,7 @@ const fontColorInput = document.getElementById('fontColor');
 const offsetXInput = document.getElementById('offsetX');
 const offsetYInput = document.getElementById('offsetY');
 const exportButton = document.getElementById('exportButton');
+const evenOddFilterSelect = document.getElementById('evenOddFilter');
 
 const PADDING = 50; // Pixels of white border around the image
 let img = new Image();
@@ -27,6 +28,7 @@ fontColorInput.addEventListener('input', draw);
 offsetXInput.addEventListener('input', draw);
 offsetYInput.addEventListener('input', draw);
 exportButton.addEventListener('click', exportImage);
+evenOddFilterSelect.addEventListener('change', draw);
 
 
 function handleImage(e) {
@@ -112,13 +114,25 @@ function draw() {
         const x = imageCenterX + numberRadius * Math.cos(currentAngle);
         const y = imageCenterY + numberRadius * Math.sin(currentAngle);
 
-        // Calculate the number to display
-        // The sequence logic might need adjustment based on exact requirements
-        // This simple version just increments from the start number
-        const numberToDraw = startNumber + i;
+        // Calculate the number to display, considering direction
+        let numberValue;
+        if (direction === 'clockwise') {
+            numberValue = startNumber + i;
+        } else { // counter-clockwise
+            numberValue = startNumber + (numCount - 1 - i);
+        }
+
+        // Apply even/odd filter
+        const evenOddFilter = evenOddFilterSelect.value;
+        if (evenOddFilter === 'even' && numberValue % 2 !== 0) {
+            continue; // Skip odd numbers
+        }
+        if (evenOddFilter === 'odd' && numberValue % 2 === 0) {
+            continue; // Skip even numbers
+        }
 
         // Format number (e.g., leading zero for single digits)
-        const formattedNumber = numberToDraw.toString().padStart(2, '0');
+        const formattedNumber = numberValue.toString().padStart(2, '0');
 
         ctx.fillText(formattedNumber, x, y);
     }
